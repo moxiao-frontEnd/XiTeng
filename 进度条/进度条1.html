@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>进度条1</title>
+</head>
+
+<body>
+
+    <script src="../进度条/jquery.min.js"></script>
+    <!--   进度条一：js代码  -->
+    <!-- 1.通过加载状态事件做进度条 -->
+    <script>
+        // document.onreadystatechange:页面加载状态改变时的事件
+        // document.readyState:返回当前文档的状态
+        // 1.uninitialized-还未开始载入
+        // 2.loading-载入中
+        // 3.interactive-已加载，文档与用户可以开始交互
+        // 4.complete-载入完成
+        document.onreadystatechange = function () {
+            console.log(document.readyState);
+            if (document.readyState == 'complete') {
+                $('选择进度条标签').fadeOut()
+            }
+        }
+    </script>
+
+    <!-- 2.实时获取加载进度条 -->
+    <script>
+        $(function () {
+            var img = $('img') //img标签
+            var num = 0
+            img.each(function (i) {
+                var oImg = new Image()
+                oImg.onload = function () {
+                    oImg.onload = null
+                    num++
+                    $('百分比标签').html(parseInt(num / $('img').size() * 100) + '%')
+                    if (num >= i) {
+                        $('进度条标签').fadeOut()
+                    }
+                }
+            })
+        })
+    </script>
+
+
+
+</body>
+
+</html>

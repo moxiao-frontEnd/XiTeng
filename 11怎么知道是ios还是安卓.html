@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 有些js代码或者兼容 是安卓手机执行  有些ios 执行
+    // 就涉及到 怎么 判断是 ios还是安卓
+    // window.navigator.userAgent 原生js 可以拿到 是什么手机系统
+    // if(是ios){
+    //   // 做ios的 兼容代码
+    // }esle if(是安卓){
+    //   //  做安卓的代码
+    // }
+
+    //获取浏览器的userAgent,并转化为小写
+    var ua = window.navigator.userAgent.toLowerCase();
+    /* 
+    "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Mobile Safari/537.36"
+    */
+    //判断是否是苹果手机，是则是true
+    // 在字符串里面找到 iphone 或者ipad 就是 ios手机
+    var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
+    if(isIos){
+      // 做苹果手机兼容
+      console.log('做苹果是','欢迎您 ios 用户')
+    }else{
+      // 做安卓
+      console.log('欢迎您 安卓 用户')
+    }
+
+  </script>
+</body>
+</html>
